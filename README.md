@@ -1,5 +1,13 @@
 Demo of a Gradle Micronaut Application which uses [NullAway](http://github.com/uber/NullAway). The build fails because, at compilation, `NullAway` detects a possible NPE. 
 
+```
+ % ./gradlew build
+
+> Task :compileJava FAILED
+/Users/sdelamo/github/sdelamo/micronaut-gradle-nullaway-demo/src/main/java/example/micronaut/GreetingController.java:21: error: [NullAway] dereferenced expression greetingService.greet() is @Nullable
+        return greetingService.greet().toUpperCase(Locale.ROOT);
+```
+
 - It [adds the Error-prone Gradle Plugin](https://github.com/tbroyer/gradle-errorprone-plugin). 
 - It [adds the JSpecify dependency](https://github.com/sdelamo/micronaut-gradle-nullaway-demo/blob/main/build.gradle.kts#L25). 
 - It [adds Error Prone Core](https://github.com/sdelamo/micronaut-gradle-nullaway-demo/blob/main/build.gradle.kts#L27) with `errorprone` Gradle Configuration. 
